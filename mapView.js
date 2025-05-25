@@ -1,4 +1,3 @@
-let userResize = 1;
 let long = 42.5;
 let lat = 12.5;
 let height = 600*0.75;
@@ -6,9 +5,8 @@ let width = 800*0.75;
 let scale = 1450;
 
 function svgMovement(svg, path, projection){
-    function updateViewBox(){
+    function updateScale(){
         console.log(`scale: ${scale}`);
-
         projection.scale(scale);
         svg.selectAll('path').attr('d', path);
     }
@@ -21,12 +19,12 @@ function svgMovement(svg, path, projection){
 
     document.getElementById('zoomIn').addEventListener('click', _ => {
         scale *= 1.1;
-        updateViewBox();
+        updateScale();
     });
 
     document.getElementById('zoomOut').addEventListener('click', _ => {
         scale *= 0.9;
-        updateViewBox();
+        updateScale();
     });
 
     document.getElementById('west').addEventListener('click', _ => {

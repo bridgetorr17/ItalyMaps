@@ -1,22 +1,45 @@
 import { svgMovement, scale, width, height, long, lat} from './mapView.js';
 
-let svg = d3.select('svg')
-    .attr('viewBox', `0 0 ${width} ${height}`);
+async function choropleth(){
+    let svg = d3.select('#italyMap')
+        .attr('viewBox', `0 0 ${width} ${height}`);
 
-const projection = d3.geoMercator()
-    .center([lat, long])
-    .scale(scale)
-    .translate([width/2, height/2]);
+    const projection = d3.geoMercator()
+        .center([lat, long])
+        .scale(scale)
+        .translate([width/2, height/2]);
 
-const path = d3.geoPath().projection(projection);
+    const path = d3.geoPath().projection(projection);
 
-d3.json('/limits_IT_regions.geojson')
-    .then(geojson => {
-        svg.selectAll("path")
-            .data(geojson.features)
-            .enter()
-            .append("path")
-            .attr("d", path);
+    const geojson = await d3.json('/limits_IT_regions.geojson');
+    const csvData = await d3.csv('/ita_reg_ann_data.csv');
+
+    const densityMap = new Map();
+    csvData.forEach(region => {
+        densityMap.set(region.den_reg, region.dens_ab);
     });
 
-svgMovement(svg, path, projection);
+    geojson.features.forEach(feature => {
+        feature.properties.density = densityMap.get(feature.properties.reg_name) || 0;
+        console.log(feature.properties.reg_name)
+    });
+
+    const densities = geojson.features.map(f => f.properties.density);
+    const colorScale = d3.scaleLinear()
+        .domain([d3.min(densities), d3.max(densities)])
+        .range(["#2967cc", "#205fc7"])
+
+
+    svg.selectAll("path")
+        .data(geojson.features)
+        .enter()
+        .append("path")
+        .attr("d", path)
+        .attr("stroke", "#000000")
+        .attr("fill", d => colorScale(d.properties.density));
+
+    svgMovement(svg, path, projection);
+}
+
+
+choropleth();
