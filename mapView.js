@@ -1,6 +1,6 @@
 let userResize = 1;
 let long = 42.5;
-let lat = 7.4;
+let lat = 12.5;
 let height = 600*0.75;
 let width = 800*0.75;
 let scale = 1450;
