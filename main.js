@@ -1,25 +1,11 @@
-let userResize = 1;
-let long = 45.5;
-let lat = 12.5;
-document.getElementById('zoomIn').addEventListener('click', _ => {
-    userResize -= 0.1;
-    updateViewBox();
-});
-
-document.getElementById('zoomOut').addEventListener('click', _ => {
-    userResize += 0.1;
-    updateViewBox();
-});
-
-const width = 300;
-const height = 400;
+import { svgMovement, scale, width, height, long, lat} from './mapView.js';
 
 let svg = d3.select('svg')
-    .attr('viewBox', `0 0 ${width*userResize} ${height*userResize}`);
+    .attr('viewBox', `0 0 ${width} ${height}`);
 
 const projection = d3.geoMercator()
     .center([lat, long])
-    .scale(2500)
+    .scale(scale)
     .translate([width/2, height/2]);
 
 const path = d3.geoPath().projection(projection);
@@ -33,6 +19,4 @@ d3.json('/limits_IT_regions.geojson')
             .attr("d", path);
     });
 
-function updateViewBox() {
-    svg.attr('viewBox', `0 0 ${userResize*width} ${userResize*height}`)
-}
+svgMovement(svg, path, projection);

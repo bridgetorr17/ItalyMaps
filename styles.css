@@ -1,5 +1,15 @@
 body{
     font-size: 62.5%;
+    margin: 0;
+}
+
+/*
+MAP MOVEMENT
+*/
+#movement{
+    display: flex;
+    flex-direction: row;
+    margin: 2rem;
 }
 
 #resizing{
@@ -12,7 +22,26 @@ body{
 
 #resizing > *{
     width: 30%;
-    border: 1px solid black;
+    margin: 0.2rem;
+    background-color: rgb(190, 182, 182);
     text-align: center;
     font-size: 1rem;
+}
+
+#cardinal{
+    display: flex;
+    flex-direction: column;
+}
+
+#cardinal > *{
+    margin: 0.2rem;
+    background-color: rgb(190, 182, 182);
+    text-align: center;
+
+}
+
+svg{
+    width: 80%;
+    height: 60vh;
+    margin-top: -1rem;
 }
