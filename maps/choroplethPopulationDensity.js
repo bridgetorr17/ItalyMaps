@@ -1,7 +1,7 @@
-import { svgMovement, scale, width, height, long, lat} from '../mapView.js';
+import { svgMovement, scale, width, height, long, lat} from './mapView.js';
 
 async function choropleth(){
-    let svg = d3.select('#italyMap')
+    let svg = d3.select('#italyPopulationMap')
         .attr('viewBox', `0 0 ${width} ${height}`);
 
     const projection = d3.geoMercator()
