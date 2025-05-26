@@ -1,4 +1,4 @@
-import { svgMovement, scale, width, height, long, lat} from './mapView.js';
+import { svgMovement, scale, width, height, long, lat} from '../mapView.js';
 
 async function choropleth(){
     let svg = d3.select('#italyMap')
@@ -11,8 +11,8 @@ async function choropleth(){
 
     const path = d3.geoPath().projection(projection);
 
-    const geojson = await d3.json('/limits_IT_regions.geojson');
-    const csvData = await d3.csv('/ita_reg_ann_data.csv');
+    const geojson = await d3.json('/datasets/limits_IT_regions.geojson');
+    const csvData = await d3.csv('/datasets/ita_reg_ann_data.csv');
 
     const densityMap = new Map();
     csvData.forEach(region => {
@@ -21,13 +21,12 @@ async function choropleth(){
 
     geojson.features.forEach(feature => {
         feature.properties.density = densityMap.get(feature.properties.reg_name) || 0;
-        console.log(feature.properties.reg_name)
     });
 
     const densities = geojson.features.map(f => f.properties.density);
     const colorScale = d3.scaleLinear()
         .domain([d3.min(densities), d3.max(densities)])
-        .range(["#2967cc", "#205fc7"])
+        .range(["#205fc7","#346dc9"])
 
 
     svg.selectAll("path")
@@ -40,6 +39,5 @@ async function choropleth(){
 
     svgMovement(svg, path, projection);
 }
-
 
 choropleth();
