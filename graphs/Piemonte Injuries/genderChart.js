@@ -1,7 +1,7 @@
 async function drawGenderChart(){
     let genderData;
     try{
-        const res = await fetch('../Preprocessing/Pieomonte/genderData.json');
+        const res = await fetch('../Preprocessing/Piemonte/genderData.json');
         genderData = await res.json();
         //console.log(genderData);
     }
