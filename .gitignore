@@ -1,1 +1,3 @@
-limits_IT_regions.geojson
+datasets/limits_IT_regions.geojson
+datasets/DatiConCadenzaMensileInfortuniPiemonte.csv
+datasets/ita_reg_ann_data.csv
