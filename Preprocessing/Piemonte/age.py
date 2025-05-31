@@ -12,6 +12,7 @@ df = pd.DataFrame({'Ages': ageList})
 ageGroups = pd.cut(df['Ages'], bins=ageBins, labels=ageLabels, right=False)
 
 ageData = ageGroups.value_counts().reindex(ageLabels, fill_value=0)
-
+ageDataJSON = ageData.to_dict()
+print(ageDataJSON)
 with open ("ageData.json", "w") as f:
-    json.dump(ageData.to_json(), f)
+    json.dump(ageDataJSON, f)

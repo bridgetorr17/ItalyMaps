@@ -70,4 +70,11 @@ PIEMONTE WORKPLACE INJURY DASBOARD
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.dashboard4x4 > svg{
+    border: 1px solid black;
+    width: 49%;
+    padding: 2px; 
 }
