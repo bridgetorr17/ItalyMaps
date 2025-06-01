@@ -3,7 +3,6 @@ async function drawAgeChart() {
     try{
         const res = await fetch('../Preprocessing/Piemonte/ageData.json');
         ageData = await res.json();
-        console.log(ageData)
     }
     catch(err){
         console.error('failed to load gender data: ', err)
@@ -52,7 +51,7 @@ async function drawAgeChart() {
             .attr("y", (y(element)))
             .attr("height", y(0) - y(element))
             .attr("width", barWidth)
-            .attr("fill", "#60945a")
+            .attr("fill", "#6f1ac9")
             .attr("x", barx + 45)
             .attr("transform", `translate(${0}, ${-20})`)
 

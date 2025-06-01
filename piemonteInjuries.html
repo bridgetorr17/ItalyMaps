@@ -8,6 +8,10 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/cal-heatmap@4.2.4/dist/cal-heatmap.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cal-heatmap@4.2.4/dist/plugins/Legend.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cal-heatmap@4.2.4/dist/plugins/Tooltip.min.js"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cal-heatmap@4.2.4/dist/cal-heatmap.min.css">
 
     <script type="module" src="/graphs/Piemonte Injuries/dashboard.js"></script>
@@ -24,9 +28,17 @@
     <div class="dashboard4x4">
         <svg id="genderChart"></svg>
         <svg id="ageChart"></svg>
-        <div id="cal-heatmap"></div>
+        <div id="timeChart-container">
+            <div id="yearLabels">
+                <span>2024</span>
+                <span>2025</span>
+            </div>
+            <div id="timeChart">
+                <div id="legend-container"></div>
+                <div id="cal-heatmap"></div>
+            </div>
+        </div>
         <svg id="industryChart"></svg>
     </div>
-    
 </body>
 </html>

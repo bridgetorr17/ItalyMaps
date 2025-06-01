@@ -78,3 +78,32 @@ PIEMONTE WORKPLACE INJURY DASBOARD
     width: 49%;
     padding: 2px; 
 }
+
+#cal-heatmap{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#cal-heatmap > svg{
+    align-self: center;
+    padding: 0.5rem;
+}
+
+#timeChart-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#yearLabels{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#timeChart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
