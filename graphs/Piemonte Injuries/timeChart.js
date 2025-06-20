@@ -21,7 +21,7 @@ async function drawTimeChart(){
         },
         scale: {
             color: {
-                scheme: 'BuPu',
+                range: [ '#874CCC','#10439F'],
                 type: 'linear',
                 domain: [0, 200]
             }
@@ -63,7 +63,7 @@ async function drawTimeChart(){
         },
         scale: {
           color: {
-                scheme: 'BuPu',
+                range: [ '#874CCC','#10439F'],
                 type: 'linear',
                 domain: [0, 200]
             }

@@ -61,7 +61,7 @@ async function drawIndustryChart(){
 
     const color = d3.scaleLinear()
         .domain([d3.min(values), d3.max(values)])
-        .range(["#2dc0fa","#040ec9"]);
+        .range(["#a6c6ff","#10439F"]);
 
     const data_ready = pie(pieData);
 

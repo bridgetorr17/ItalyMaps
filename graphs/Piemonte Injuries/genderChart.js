@@ -20,7 +20,7 @@ async function drawGenderChart(){
 
     const color = d3.scaleOrdinal()
         .domain([genderData.males, genderData.females])
-        .range(['#0e2ced', "#d42cc9"]);
+        .range(['#10439F', "#874CCC"]);
 
     const pieData = Object.entries(genderData).map(([key, value]) => ({
         key,
@@ -28,10 +28,6 @@ async function drawGenderChart(){
     }));
 
     const total = d3.sum(pieData, d => d.value);
-
-    // const labelArc = d3.arc()
-    //     .innerRadius(40)
-    //     .outerRadius(radius);
 
     svg.selectAll("rect")
         .data(pieData)
