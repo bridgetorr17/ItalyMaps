@@ -37,10 +37,15 @@ industryNumbers = {}
 for letter in range(ord('A'), ord('U') + 1):
     industryNumbers[chr(letter)] = 0
 
-industryNumbers['ND'] = 0
-
 for letter in industryNumbers:
    industryNumbers[letter] = macroNums.count(letter)
 
+sortedIndustryNums = sorted(industryNumbers.items(), key=lambda x: x[1], reverse=True)
+
+
+
 with open ("industryData.json", "w") as f:
-    json.dump(industryNumbers, f)
+    json.dump({
+        "industryNumbers": industryNumbers,
+        "sortedIndustryNums": sortedIndustryNums
+        }, f, indent=4)
