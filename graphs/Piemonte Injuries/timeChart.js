@@ -2,8 +2,6 @@ async function drawTimeChart(){
     let data2024 = await loadData(2024);
     let data2025 = await loadData(2025);
 
-    console.log(data2025);
-
     const calendar2024 = new CalHeatmap();
     const calendar2025 = new CalHeatmap();
 

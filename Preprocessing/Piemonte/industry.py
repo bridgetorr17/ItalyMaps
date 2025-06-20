@@ -29,8 +29,9 @@ industryList = df["SettoreAttivitaEconomica"].tolist()
 
 # industry category letters without subcategories
 macroNums = [
-    entry if entry == 'ND'
-    else entry.split()[0] for entry in industryList]
+    entry.split()[0] 
+    for entry in industryList
+    if entry != 'ND']
 industryNumbers = {}
 
 for letter in range(ord('A'), ord('U') + 1):
