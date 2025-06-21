@@ -29,20 +29,18 @@
             <h2 class="text-xl">Italy Data Visualization</h2>
             <h1 class="text-3xl">Piedmont Workplace Injuries Dashboard</h1>
         </section>
-        <section>
-            <svg id="genderChart"></svg>
-            <svg id="ageChart"></svg>
-            <div id="timeChart-container">
-                <div id="yearLabels">
-                    <span>2024</span>
-                    <span>2025</span>
+        <section class="min-h-screen p-4">
+            <div class="flex flex-row gap-4 justify-center">
+                <div class="flex flex-col gap-4 justify-evenly">
+                    <div id="cal-heatmap" ></div>
+                    <svg id="genderChart" ></svg>
                 </div>
-                <div id="timeChart">
-                    <div id="legend-container"></div>
-                    <div id="cal-heatmap"></div>
-                </div>
+                <svg id="ageChart"></svg>
             </div>
-            <svg id="industryChart"></svg>
+            <div>
+                <svg id="industryChart"></svg>
+                <div id="industryLegend"></div>
+            </div>
         </section>
     </main>
 </body>

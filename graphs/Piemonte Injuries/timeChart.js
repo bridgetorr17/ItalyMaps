@@ -1,51 +1,7 @@
 async function drawTimeChart(){
-    let data2024 = await loadData(2024);
+    
     let data2025 = await loadData(2025);
-
-    const calendar2024 = new CalHeatmap();
     const calendar2025 = new CalHeatmap();
-
-    calendar2024.paint({
-        range: 3,
-        domain: { type: 'month' },
-        subDomain: {
-            type: 'day',
-        },
-        date:{
-            start: new Date('2024-01-01')
-        },
-        data: {
-            source: data2024,
-            x: 'date',
-            y: 'value'
-        },
-        scale: {
-            color: {
-                range: [ '#874CCC','#10439F'],
-                type: 'linear',
-                domain: [0, 200]
-            }
-        }
-    }, [
-        [
-            Legend, 
-            {
-                label: 'Injury Count',
-                itemSelector: '#legend-container'
-            }
-        ],
-        [
-            Tooltip,
-            {
-                text: (timestamp, value) => {
-                    const date = new Date(timestamp);
-                    const formatted = date.toLocaleDateString('en-US');
-                    return `${formatted}: ${value ?? 0} injuries`;
-                }
-            }
-        ]
-    ]
-);
 
     calendar2025.paint({
         range: 3,

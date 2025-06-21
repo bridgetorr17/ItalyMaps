@@ -10,7 +10,7 @@ async function drawGenderChart(){
     }
 
     const width = 200;
-    const height = 20;
+    const height = 50;
     let xOffset = 0;
     let currentOffset = 0;
 
