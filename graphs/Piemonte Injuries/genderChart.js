@@ -10,50 +10,52 @@ async function drawGenderChart(){
     }
 
     const width = 200;
-    const height = 200;
-    const margin = 30;
-
-    const radius = Math.min(width/2, height/2) / 2 - margin;
+    const height = 50;
+    let xOffset = 0;
+    let currentOffset = 0;
 
     const svg = d3.select("#genderChart")
         .attr("viewBox", `0 0 ${width} ${height}`)
         .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
     const color = d3.scaleOrdinal()
         .domain([genderData.males, genderData.females])
-        .range(["#46acfa","#cf67d6"]);
-
-    const pie = d3.pie()
-        .value(d => d.value)
+        .range(['#10439F', "#874CCC"]);
 
     const pieData = Object.entries(genderData).map(([key, value]) => ({
         key,
         value
     }));
 
-    const data_ready = pie(pieData);
+    const total = d3.sum(pieData, d => d.value);
 
-    const labelArc = d3.arc()
-        .innerRadius(40)
-        .outerRadius(radius);
-
-    svg.selectAll("path")
-        .data(data_ready)
+    svg.selectAll("rect")
+        .data(pieData)
         .enter()
-        .append('path')
-        .attr('d', d3.arc()
-            .innerRadius(40)
-            .outerRadius(radius))
-        .attr('fill', function(d){ return(color(d.data.key)) })
+        .append('rect')
+        .attr('x', d => {
+            currentOffset = xOffset;
+            xOffset += (d.value / total) * width;
+            return currentOffset;
+        })
+        .attr("y", 0)
+        .attr("width", d => (d.value / total) * width)
+        .attr("height", height)
+        .attr('fill', d => color(d.key))
 
     svg.selectAll("text")
-        .data(data_ready)
+        .data(pieData)
         .enter()
         .append("text")
-        .text(d => d.data.key.toUpperCase())
-        .attr("transform", d => `translate(${labelArc.centroid(d)})`)
-        .style("text-anchor", "inherit")
+        .text(d => {
+            return d.key.toUpperCase()
+        })
+        .attr("x", d => {
+            if(d.key === 'males') return 50;
+            else return 150;
+        })
+        .attr("y", height / 2)  // vertically centered in the bar    
+        .style("text-anchor", "middle")
         .style("font-size", "7.5px")
 }
 

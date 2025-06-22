@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/cal-heatmap@4.2.4/dist/cal-heatmap.min.js"></script>
@@ -13,32 +12,36 @@
     <script src="https://cdn.jsdelivr.net/npm/cal-heatmap@4.2.4/dist/plugins/Tooltip.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cal-heatmap@4.2.4/dist/cal-heatmap.min.css">
+    <link rel="stylesheet" href="output.css">
 
     <script type="module" src="/graphs/Piemonte Injuries/dashboard.js"></script>
 </head>
 <body>
     <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="populationDensity.html">Population Density by Region</a>
-            <a href="piemonteInjuries.html">Workplace Injuries in Piemonte Region in Q1 2025</a>
+        <nav class="flex justify-between items-center p-4 bg-gradient-to-r from-blue-500 to-blue-800 shadow-lg">
+            <a href="index.html" class="text-white text-xl font-semibold hover:text-gray-200 transition duration-300">Home</a>
+            <a href="#about" class="text-white text-xl font-semibold hover:text-gray-200 transition duration-300">About</a>
+            <a href="populationDensity.html" class="text-white text-xl font-semibold hover:text-gray-200 transition duration-300">Population Density</a>
         </nav>
     </header>
-    <h1>Piemonte Workplace Injuries Dashboard</h1>
-    <div class="dashboard4x4">
-        <svg id="genderChart"></svg>
-        <svg id="ageChart"></svg>
-        <div id="timeChart-container">
-            <div id="yearLabels">
-                <span>2024</span>
-                <span>2025</span>
+    <main class="flex flex-col p-8">
+        <section class="mb-8">
+            <h2 class="text-xl">Italy Data Visualization</h2>
+            <h1 class="text-3xl">Piedmont Workplace Injuries Dashboard</h1>
+        </section>
+        <section class="min-h-screen p-4">
+            <div class="flex flex-row gap-4 justify-center">
+                <div class="flex flex-col gap-4 justify-evenly">
+                    <div id="cal-heatmap" ></div>
+                    <svg id="genderChart" ></svg>
+                </div>
+                <svg id="ageChart"></svg>
             </div>
-            <div id="timeChart">
-                <div id="legend-container"></div>
-                <div id="cal-heatmap"></div>
+            <div>
+                <svg id="industryChart"></svg>
+                <div id="industryLegend"></div>
             </div>
-        </div>
-        <svg id="industryChart"></svg>
-    </div>
+        </section>
+    </main>
 </body>
 </html>

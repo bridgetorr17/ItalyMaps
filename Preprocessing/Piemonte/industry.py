@@ -1,0 +1,51 @@
+import pandas as pd
+import json 
+
+df = pd.read_csv("../../datasets/DatiConCadenzaMensileInfortuniPiemonte.csv", sep=";")
+
+industryList = df["SettoreAttivitaEconomica"].tolist()
+# A - Agriculture, forestry, fishing
+# B - Mining and quarrying
+# C - manufacturing
+# D - Electricity, gas, steam and AC supply
+# E - water supply, sewage, waste management and remediation
+# F - construction
+# G - wholesale and retail trade, repare of moto vehicles and motorcycles
+# H - transportation and storage
+# I - acoomonation and food service activities
+# J - infomration and communication
+# K - financial and isurance activities
+# L - real estate activities
+# M - professional, scientific and technical
+# N - administrating and suppor service
+# O - public adinistratione and defence, compulsory social security
+# P - education
+# Q - human health and social work activities
+# R - arts, entertainment and recreation
+# S - other service acitivities
+# T -  activites of households as employers, 
+# U - activities of extraterritotrial orgnizations
+# ND - non disclosed
+
+# industry category letters without subcategories
+macroNums = [
+    entry.split()[0] 
+    for entry in industryList
+    if entry != 'ND']
+industryNumbers = {}
+
+for letter in range(ord('A'), ord('U') + 1):
+    industryNumbers[chr(letter)] = 0
+
+for letter in industryNumbers:
+   industryNumbers[letter] = macroNums.count(letter)
+
+sortedIndustryNums = sorted(industryNumbers.items(), key=lambda x: x[1], reverse=True)
+
+
+
+with open ("industryData.json", "w") as f:
+    json.dump({
+        "industryNumbers": industryNumbers,
+        "sortedIndustryNums": sortedIndustryNums
+        }, f, indent=4)
