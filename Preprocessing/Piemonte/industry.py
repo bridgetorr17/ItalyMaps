@@ -50,9 +50,18 @@ sortedList = sortedList[0:-8]
 sortedList.append(("S",lowerInd))
 sortedList = dict(sortedList)
 
+print(sortedList)
+totalInjuries = sum(sortedList.values())
+percentages = []
+
+for ind in sortedList: 
+    percentages.append((ind, round((sortedList[ind]/totalInjuries)*100)))
+
+percentages = dict(percentages)
 with open ("industryData.json", "w") as f:
     json.dump({
         "industryNumbers": industryNumbers,
         "sortedIndustryNums": sortedIndustryNums,
-        "sortedIndustryNumsConsolidated": sortedList
+        "sortedIndustryNumsConsolidated": sortedList,
+        "percentagesConsolidated": percentages
         }, f, indent=4)

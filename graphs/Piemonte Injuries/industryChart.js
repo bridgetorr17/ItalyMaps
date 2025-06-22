@@ -47,7 +47,7 @@ async function drawIndustryChart(){
     const svg = d3.select("#industryChart")
         .attr("viewBox", `0 0 ${width} ${height/2}`)
         .append("g")
-        .attr("transform", "translate(" + width / 4 + "," + height / 4 + ")");
+        .attr("transform", "translate(" + width / 5 + "," + height / 4 + ")");
 
     const pie = d3.pie()
         .value(d => d.value)
@@ -86,7 +86,7 @@ async function drawIndustryChart(){
         .attr("class", "legend-item")
         .attr("transform", (d, i) => {
             console.log(i * (legendRectSize + legendSpacing));
-            return `translate(${width/1.25}, ${ 50 + (i * (legendRectSize + legendSpacing))})`
+            return `translate(${width/1.3}, ${ 50 + (i * (legendRectSize + legendSpacing))})`
         });
 
     // Color boxes
@@ -103,7 +103,7 @@ async function drawIndustryChart(){
         .attr("x", legendRectSize + 5)
         .attr("y", legendRectSize - 1)
         .text(d => {
-            return industriesNames[d.key]
+            return `${industriesNames[d.key]} - ${industryData["percentagesConsolidated"][d.key]}%`
         })
         .style("font-size", "5px");
 }
