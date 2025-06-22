@@ -32,12 +32,22 @@
         <section class="min-h-screen p-4">
             <div class="flex flex-row gap-4 justify-center">
                 <div class="flex flex-col gap-4 justify-evenly">
-                    <div id="cal-heatmap" ></div>
-                    <svg id="genderChart" ></svg>
+                    <div class="p-8 bg-white rounded-lg shadow-lg">
+                        <span>by date</span>
+                        <div id="cal-heatmap"></div>
+                    </div>
+                    <div class="p-8 bg-white rounded-lg shadow-lg">
+                        <span>by gender</span>
+                        <svg id="genderChart"></svg>
+                    </div>
                 </div>
-                <svg id="ageChart"></svg>
+                <div class="p-8 bg-white rounded-lg shadow-lg">
+                    <span>by age</span>
+                    <svg id="ageChart" class="w-70"></svg>
+                </div>    
             </div>
-            <div>
+            <div class="p-8 bg-white rounded-lg shadow-lg">
+                <span>by industry</span>
                 <svg id="industryChart"></svg>
                 <div id="industryLegend"></div>
             </div>

@@ -36,7 +36,7 @@ async function drawIndustryChart(){
     //pie chart params
     const width = 200;
     const height = 200;
-    const margin = 30;
+    const margin = 50;
 
     //legend params
     const legendRectSize = 5;
@@ -45,14 +45,14 @@ async function drawIndustryChart(){
     const radius = Math.min(width/2, height/2) / 2 - margin;
 
     const svg = d3.select("#industryChart")
-        .attr("viewBox", `0 0 ${width} ${height}`)
+        .attr("viewBox", `0 0 ${width} ${height/2}`)
         .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+        .attr("transform", "translate(" + width / 4 + "," + height / 4 + ")");
 
     const pie = d3.pie()
         .value(d => d.value)
 
-    const pieData = Object.entries(industryData["industryNumbers"]).map(([key, value]) => ({
+    const pieData = Object.entries(industryData["sortedIndustryNumsConsolidated"]).map(([key, value]) => ({
         key,
         value
     }));
@@ -84,7 +84,10 @@ async function drawIndustryChart(){
         .enter()
         .append("g")
         .attr("class", "legend-item")
-        .attr("transform", (d, i) => `translate(0, ${i * (legendRectSize + legendSpacing)})`);
+        .attr("transform", (d, i) => {
+            console.log(i * (legendRectSize + legendSpacing));
+            return `translate(${width/1.25}, ${ 50 + (i * (legendRectSize + legendSpacing))})`
+        });
 
     // Color boxes
     legendItems.append("rect")
@@ -102,7 +105,7 @@ async function drawIndustryChart(){
         .text(d => {
             return industriesNames[d.key]
         })
-        .style("font-size", "6px");
+        .style("font-size", "5px");
 }
 
 export {drawIndustryChart}

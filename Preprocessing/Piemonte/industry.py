@@ -40,12 +40,19 @@ for letter in range(ord('A'), ord('U') + 1):
 for letter in industryNumbers:
    industryNumbers[letter] = macroNums.count(letter)
 
-sortedIndustryNums = sorted(industryNumbers.items(), key=lambda x: x[1], reverse=True)
+sortedIndustryNums = dict(sorted(industryNumbers.items(), key=lambda x: x[1], reverse=True))
 
+sortedList = list(sortedIndustryNums.items())
+items = sortedList[-8:]
+lowerInd = sum(v for _, v in items)
 
+sortedList = sortedList[0:-8]
+sortedList.append(("S",lowerInd))
+sortedList = dict(sortedList)
 
 with open ("industryData.json", "w") as f:
     json.dump({
         "industryNumbers": industryNumbers,
-        "sortedIndustryNums": sortedIndustryNums
+        "sortedIndustryNums": sortedIndustryNums,
+        "sortedIndustryNumsConsolidated": sortedList
         }, f, indent=4)
