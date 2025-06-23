@@ -86,7 +86,7 @@ async function drawIndustryChart(){
         .attr("class", "legend-item")
         .attr("transform", (d, i) => {
             console.log(i * (legendRectSize + legendSpacing));
-            return `translate(${width/1.3}, ${ 50 + (i * (legendRectSize + legendSpacing))})`
+            return `translate(${width/1.25}, ${ 50 + (i * (legendRectSize + legendSpacing))})`
         });
 
     // Color boxes

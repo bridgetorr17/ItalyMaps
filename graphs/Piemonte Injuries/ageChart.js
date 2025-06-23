@@ -13,14 +13,15 @@ async function drawAgeChart() {
     const margin = { top: 20, right: 20, bottom: 30, left: 50 };
 
     const svg = d3.select('#ageChart')
-        .attr("viewBox", `0 0 ${width} ${height}`);
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .attr("preserveAspectRation", "xMinYMin meet")
 
     const ageRanges = Object.keys(ageData);
     const values = Object.values(ageData);
 
     //y axis - age ranges
     const y = d3.scaleBand()
-                .domain(ageRanges)
+                .domain(ageRanges.reverse())
                 .range([margin.top, height - margin.bottom])
                 .padding(0.1);
 
