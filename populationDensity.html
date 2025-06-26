@@ -4,30 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cal-heatmap@4.2.4/dist/cal-heatmap.min.css">
+    <link rel="stylesheet" href="output.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script type="module" src="/maps/choroplethPopulationDensity.js"></script>
 </head>
 <body>
     <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="populationDensity.html">Population Density by Region</a>
-            <a href="piemonteInjuries.html">Workplace Injuries in Piemonte Region in Q1 2025</a>
+        <nav class="flex justify-between items-center p-4 bg-gradient-to-r from-indigo-800 to-violet-700 shadow-lg">
+            <a href="index.html" class="text-white text-xl font-semibold hover:text-gray-200 transition duration-300">Home</a>
         </nav>
     </header>
-    <section id="movement">
-        <div id="resizing">
-            <span id="zoomIn">+</span>
-            <span id="zoomOut">-</span>
-        </div>
-        <div id="cardinal">
-            <span id="north">NORTH</span>
-            <span id="east">EAST</span>
-            <span id="south">SOUTH</span>
-            <span id="west">WEST</span>
-        </div>
-    </section>
-    <svg id="italyPopulationMap"></svg>
+    <main class="flex flex-col p-8">
+        <section class="mb-8">
+            <h2 class="text-xl">Italy Data Visualization</h2>
+            <section>
+                <h1 class="text-3xl">Population Density with Choropleth</h1>
+                <span><a href="" class="text-xs">DATASET SOURCE</a></span>
+            </section>
+        </section>
+        <section>
+            <svg class=" h-60vh border-2" id="italyPopulationMap"></svg>
+            <section id="movement">
+                <div id="resizing">
+                    <span id="zoomIn">+</span>
+                    <span id="zoomOut">-</span>
+                </div>
+                <div id="cardinal">
+                    <span id="north">NORTH</span>
+                    <span id="east">EAST</span>
+                    <span id="south">SOUTH</span>
+                    <span id="west">WEST</span>
+                </div>
+            </section>
+        </section>
+    </main>
 </body>
 </html>
