@@ -26,8 +26,13 @@ async function choropleth(){
     const densities = geojson.features.map(f => f.properties.density);
     const colorScale = d3.scaleLinear()
         .domain([d3.min(densities), d3.max(densities)])
-        .range(["#205fc7","#346dc9"])
+        .range(["#205fc7","#346dc9"]);
 
+    const tooltip = d3.select("body").append("div")
+                      .attr("class", "tooltip")
+                      .style("position", "absolute")
+                      .style("opacity", 0)
+                      .style("z-index", 1000);    
 
     svg.selectAll("path")
         .data(geojson.features)
@@ -35,8 +40,18 @@ async function choropleth(){
         .append("path")
         .attr("d", path)
         .attr("stroke", "#000000")
-        .attr("fill", d => colorScale(d.properties.density));
-
+        .attr("fill", d => colorScale(d.properties.density))
+        .on("mouseover", function(event, d) {
+            const [x,y] = [event.pageX, event.pageY];
+            console.log(`x is ${x} and y is ${y}`)
+            tooltip.style("opacity", 1)
+                    .html(d.properties.reg_name)
+                    .style("left", (x - tooltip.node().offsetWidth/2) + "px")
+                    .style("top", (y - tooltip.node().offsetHeight) + "px")
+        })
+        .on("mouseout", () => {
+            tooltip.style("opacity", 0)
+        })
     svgMovement(svg, path, projection);
 }
 

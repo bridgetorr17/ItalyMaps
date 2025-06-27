@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 1000;
+
+  background-color: rgba(0, 0, 0, 0.75); /* semi-transparent dark */
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+/* Optional: small arrow */
+.tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -5px; /* arrow below tooltip */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px 5px 0 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
+}
