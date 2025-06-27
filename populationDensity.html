@@ -15,7 +15,7 @@
             <a href="index.html" class="text-white text-xl font-semibold hover:text-gray-200 transition duration-300">Home</a>
         </nav>
     </header>
-    <main class="flex flex-col p-8">
+    <main class="flex flex-col p-8 bg-gray-100">
         <section class="mb-8">
             <h2 class="text-xl">Italy Data Visualization</h2>
             <section>
@@ -23,19 +23,15 @@
                 <span><a href="" class="text-xs">DATASET SOURCE</a></span>
             </section>
         </section>
-        <section>
-            <svg class=" h-60vh border-2" id="italyPopulationMap"></svg>
-            <section id="movement">
-                <div id="resizing">
-                    <span id="zoomIn">+</span>
-                    <span id="zoomOut">-</span>
-                </div>
-                <div id="cardinal">
-                    <span id="north">NORTH</span>
-                    <span id="east">EAST</span>
-                    <span id="south">SOUTH</span>
-                    <span id="west">WEST</span>
-                </div>
+        <section class="flex flex-col border-2 rounded-4xl p-6 bg-white">
+            <svg class="h-60vh max-w-2xl self-center" id="italyPopulationMap"></svg>
+            <section class="flex flex-row justify-center m-3 border-t-2 max-w-2xl self-center" id="movement">
+                <img class="w-8 m-2" src="images/plus.png" alt="zoom in" id="zoomIn">
+                <img class="w-8 m-2" src="images/minus.png" alt="zoom out" id="zoomOut">
+                <img class="w-8 rotate-270 m-2" src="images/movement.svg" alt="NORTH" id="north">
+                <img class="w-8 rotate-90 m-2" src="images/movement.svg" alt="SOUTH" id="south">
+                <img class="w-8 rotate-180 m-2" src="images/movement.svg" alt="WEST" id="west">
+                <img class="w-8 m-2" src="images/movement.svg" alt="EAST" id="east">
             </section>
         </section>
     </main>
