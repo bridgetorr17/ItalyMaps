@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 .tooltip {
   position: absolute;
   pointer-events: none;
