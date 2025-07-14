@@ -11,8 +11,8 @@ async function choropleth(){
 
     const path = d3.geoPath().projection(projection);
 
-    const geojson = await d3.json('/datasets/limits_IT_regions.geojson');
-    const csvData = await d3.csv('/datasets/ita_reg_ann_data.csv');
+    const geojson = await d3.json('../datasets/limits_IT_regions.geojson');
+    const csvData = await d3.csv('../datasets/ita_reg_ann_data.csv');
 
     const densityMap = new Map();
     csvData.forEach(region => {
